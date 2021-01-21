@@ -107,7 +107,7 @@ let allIconsBoxHtml = document.getElementsByClassName('all-icons-box')[0];
 console.log('Milestone 2*****************************************************');
 
 // Definizione di array di colori
-arrayColori = ['verde', 'blu', 'arancione', 'viola', 'rosso'];
+arrayColori = ['green', 'orange', 'blue', 'grey'];
 
 arrayIcone.forEach( (element) => {
   let {tipo} = element;
@@ -153,3 +153,36 @@ arrayIcone.forEach( (element) =>{
 // Milestone 3:
 // - Aggiungere una select per filtrare le icone in base al tipo.
 // - Popolare le options della select dinamicamente e, ogni volta che cambia il valore selezionato, visualizzare le icone corrispondenti.
+let iconFilterTypeHtml = document.getElementById('icon-filter-type');
+
+arrayColori.forEach( (element) =>{
+
+  iconFilterTypeHtml.innerHTML +=`
+    <option value="${element}">${element}</option>
+  `;
+});
+
+
+// JQUERY - Evento change del filtro
+$('#icon-filter-type').change(function(){
+
+  // // Svuota Box
+  $('.all-icons-box').text('');
+
+  // // Popola Box
+  arrayIcone.forEach( (element) =>{
+    let {nome, prefisso, famiglia, colore} = element;
+    // console.log (`
+    //   colore: ${colore}
+    //   selezione: ${$(this).val()}`);
+    if(colore === $(this).val()){
+      $('.all-icons-box').append(`
+      <div class="icon-box">
+        <i class='${famiglia} ${prefisso}-${nome}' style="color:${colore}"> </i>
+        <div> ${nome} </div>
+      </div>
+      `);
+    }
+  });
+
+});
