@@ -22,104 +22,126 @@ const arrayIcone = [
     nome: 'user',
     prefisso: 'fa',
     tipo: 'utenti',
-    famiglia: 'fas',
+    famiglia: 'fas'
   },
   {
     nome: 'users',
     prefisso: 'fa',
     tipo: 'utenti',
-    famiglia: 'fas',
+    famiglia: 'fas'
   },
   {
     nome: 'user-tie',
     prefisso: 'fa',
     tipo: 'utenti',
-    famiglia: 'fas',
+    famiglia: 'fas'
   },
   {
     nome: 'backward',
     prefisso: 'fa',
     tipo: 'mp3',
-    famiglia: 'fas',
+    famiglia: 'fas'
   },
   {
     nome: 'play',
     prefisso: 'fa',
     tipo: 'mp3',
-    famiglia: 'fas',
+    famiglia: 'fas'
   },
   {
     nome: 'forward',
     prefisso: 'fa',
     tipo: 'mp3',
-    famiglia: 'fas',
+    famiglia: 'fas'
   },
   {
     nome: 'cat',
     prefisso: 'fa',
-    tipo: 'jpg',
-    famiglia: 'fas',
+    tipo: 'testdefault',
+    famiglia: 'fas'
   },
   {
     nome: 'crow',
     prefisso: 'fa',
     tipo: 'animali',
-    famiglia: 'fas',
+    famiglia: 'fas'
   },
   {
     nome: 'dragon',
     prefisso: 'fa',
     tipo: 'animali',
-    famiglia: 'fas',
+    famiglia: 'fas'
   },
   {
     nome: 'otter',
     prefisso: 'fa',
     tipo: 'animali',
-    famiglia: 'fas',
+    famiglia: 'fas'
   },
   {
     nome: 'spider',
     prefisso: 'fa',
     tipo: 'animali',
-    famiglia: 'fas',
+    famiglia: 'fas'
   }
 ];
 
 // Prendi elementi dal document Html
-let iconeHtml = document.getElementsByClassName('all-icons-box')[0];
+let allIconsBoxHtml = document.getElementsByClassName('all-icons-box')[0];
 
-arrayIcone.forEach( (element) =>{
-  let {nome, prefisso, famiglia} = element
-  iconeHtml.innerHTML +=`
-  <div class="icon-box">
-    <i class='${famiglia} ${prefisso}-${nome}'> </i>
-    <div> ${nome} </div>
-  </div>
-  `;
-});
+// AGGIORNATO IN MILESTONE 2
+// arrayIcone.forEach( (element) =>{
+//   let {nome, prefisso, famiglia, colore} = element
+//   allIconsBoxHtml.innerHTML +=`
+//   <div class="icon-box">
+//     <i class="${famiglia} ${prefisso}-${nome}"> </i>
+//     <div> ${nome} </div>
+//   </div>
+//   `;
+// });
 
 
 // Milestone 2:
 // - Definire un array di colori e associare ad ogni tipo di icona un colore.
 // - Visualizzare le icone di colore diverso in base al tipo.
-// console.log('Milestone 2*****************************************************');
-// arrayColori = ['bianco', 'verde', 'blu', 'arancione', 'viola'];
-//
-// arrayIcone.forEach( (element) => {
-//   let {tipo} = element
-//   if (tipo === 'jpg' ){
-//     element.colore = 'green';
-//   }
-//   if (tipo === 'png' ){
-//     element.colore = 'orange';
-//   }
-//   if (tipo === 'bmp' ){
-//     element.colore = 'blue';
-//   }
-//
-// });
-//
+console.log('Milestone 2*****************************************************');
+
+// Definizione di array di colori
+arrayColori = ['verde', 'blu', 'arancione', 'viola', 'rosso'];
+
+arrayIcone.forEach( (element) => {
+  let {tipo} = element;
+
+  console.log('tipo vale: ' + tipo);
+  console.log(element.colore);
+  // Colore di default
+  element.colore = 'grey';
+
+  if (tipo === 'utenti' ){
+    element.colore = 'green';
+  }
+  if (tipo === 'mp3' ){
+    element.colore = 'orange';
+  }
+  if (tipo === 'animali' ){
+    element.colore = 'blue';
+  }
+
+  console.log(element.colore);
+
+});
+
+
+arrayIcone.forEach( (element) =>{
+  let {nome, prefisso, famiglia, colore} = element
+  allIconsBoxHtml.innerHTML +=`
+  <div class="icon-box">
+    <i class='${famiglia} ${prefisso}-${nome}' style="color:${colore}"> </i>
+    <div> ${nome} </div>
+  </div>
+  `;
+});
+
 // arrayIcone.forEach( (element) =>{
 //   for (var key in element) {
 //     console.log('key :' + element[key]);
