@@ -19,79 +19,113 @@
 console.log('Milestone 1*****************************************************');
 const arrayIcone = [
   {
-    nome: 'fast-rewind',
-    prefisso: 'mp3',
-    tipo: 'png',
-    famiglia: 'musica'
+    nome: 'user',
+    prefisso: 'fa',
+    tipo: 'utenti',
+    famiglia: 'fas',
+  },
+  {
+    nome: 'users',
+    prefisso: 'fa',
+    tipo: 'utenti',
+    famiglia: 'fas',
+  },
+  {
+    nome: 'user-tie',
+    prefisso: 'fa',
+    tipo: 'utenti',
+    famiglia: 'fas',
+  },
+  {
+    nome: 'backward',
+    prefisso: 'fa',
+    tipo: 'mp3',
+    famiglia: 'fas',
   },
   {
     nome: 'play',
-    prefisso: 'mp3',
-    tipo: 'png',
-    famiglia: 'musica'
+    prefisso: 'fa',
+    tipo: 'mp3',
+    famiglia: 'fas',
   },
   {
-    nome: 'fast-forward',
-    prefisso: 'mp3',
-    tipo: 'bmp',
-    famiglia: 'musica'
+    nome: 'forward',
+    prefisso: 'fa',
+    tipo: 'mp3',
+    famiglia: 'fas',
   },
   {
-    nome: 'gatto',
-    prefisso: 'ani',
+    nome: 'cat',
+    prefisso: 'fa',
     tipo: 'jpg',
-    famiglia: 'animali',
+    famiglia: 'fas',
   },
   {
-    nome: 'cane',
-    prefisso: 'ani',
-    tipo: 'png',
-    famiglia: 'animali',
+    nome: 'crow',
+    prefisso: 'fa',
+    tipo: 'animali',
+    famiglia: 'fas',
   },
   {
-    nome: 'topo',
-    prefisso: 'ani',
-    tipo: 'jpg',
-    famiglia: 'animali',
+    nome: 'dragon',
+    prefisso: 'fa',
+    tipo: 'animali',
+    famiglia: 'fas',
+  },
+  {
+    nome: 'otter',
+    prefisso: 'fa',
+    tipo: 'animali',
+    famiglia: 'fas',
+  },
+  {
+    nome: 'spider',
+    prefisso: 'fa',
+    tipo: 'animali',
+    famiglia: 'fas',
   }
 ];
 
+// Prendi elementi dal document Html
+let iconeHtml = document.getElementsByClassName('all-icons-box')[0];
 
 arrayIcone.forEach( (element) =>{
-  for (var key in element) {
-    console.log('key :' + element[key]);
-  }
-  console.log('');
+  let {nome, prefisso, famiglia} = element
+  iconeHtml.innerHTML +=`
+  <div class="icon-box">
+    <i class='${famiglia} ${prefisso}-${nome}'> </i>
+    <div> ${nome} </div>
+  </div>
+  `;
 });
-
 
 
 // Milestone 2:
 // - Definire un array di colori e associare ad ogni tipo di icona un colore.
 // - Visualizzare le icone di colore diverso in base al tipo.
-console.log('Milestone 2*****************************************************');
-arrayColori = ['bianco', 'verde', 'blu', 'arancione', 'viola'];
-
-arrayIcone.forEach( (element) => {
-  let {tipo} = element
-  if (tipo === 'jpg' ){
-    element.colore = 'green';
-  }
-  if (tipo === 'png' ){
-    element.colore = 'orange';
-  }
-  if (tipo === 'bmp' ){
-    element.colore = 'blue';
-  }
-
-});
-
-arrayIcone.forEach( (element) =>{
-  for (var key in element) {
-    console.log('key :' + element[key]);
-  }
-  console.log('');
-});
+// console.log('Milestone 2*****************************************************');
+// arrayColori = ['bianco', 'verde', 'blu', 'arancione', 'viola'];
+//
+// arrayIcone.forEach( (element) => {
+//   let {tipo} = element
+//   if (tipo === 'jpg' ){
+//     element.colore = 'green';
+//   }
+//   if (tipo === 'png' ){
+//     element.colore = 'orange';
+//   }
+//   if (tipo === 'bmp' ){
+//     element.colore = 'blue';
+//   }
+//
+// });
+//
+// arrayIcone.forEach( (element) =>{
+//   for (var key in element) {
+//     console.log('key :' + element[key]);
+//   }
+//   console.log('');
+// });
 
 
 // Milestone 3:
