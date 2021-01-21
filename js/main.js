@@ -175,13 +175,16 @@ $('#icon-filter-type').change(function(){
     // console.log (`
     //   colore: ${colore}
     //   selezione: ${$(this).val()}`);
-    if(colore === $(this).val()){
+
+    if($(this).val() === colore || ($(this).val() === 'all')){
       $('.all-icons-box').append(`
       <div class="icon-box">
         <i class='${famiglia} ${prefisso}-${nome}' style="color:${colore}"> </i>
         <div> ${nome} </div>
       </div>
       `);
+
+
     }
   });
 
