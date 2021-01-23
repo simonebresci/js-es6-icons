@@ -5,10 +5,16 @@
 }
 
 
+
+header{
+  height: 100px;
+}
+
 .icon-box{
   display: inline-block;
   text-align: center;
   font-size: 24px;
   border: 1px solid black;
   border-radius: 5px;
+  padding: 10px 15px;
 }

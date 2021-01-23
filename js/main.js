@@ -12,7 +12,19 @@
 
 
 
-// Milestone 1:
+// Todo:
+/*
+- utilizzo di funzioni
+- separare funzioni di manipolazione dati da quelle di rendering grafico HTML
+- utilizzo di jquery solamente per l'evento change
+*/
+
+
+
+
+
+
+// Milestone 1: Definizione dei dati
 // - Definire un array di oggetti; ogni oggetto rappresenta un'icona, che è caratterizzata da: nome, prefisso, tipo e famiglia.
 // - Utilizzando la funzione forEach e il template literal, visualizzare in pagina tutte le icone con il proprio nome.
 
@@ -107,33 +119,30 @@ let allIconsBoxHtml = document.getElementsByClassName('all-icons-box')[0];
 console.log('Milestone 2*****************************************************');
 
 // Definizione di array di colori
-arrayColori = ['green', 'orange', 'blue', 'grey'];
+arrayColori = ['green', 'orange', 'blue', 'lightcoral', 'pink', 'brown'];
+
+// Definizione lista dei tipi icona + popolamento
+const arrayTypes = []
 
 arrayIcone.forEach( (element) => {
-  let {tipo} = element;
 
-  console.log('tipo vale: ' + tipo);
-  console.log(element.colore);
-  // Colore di default
-  element.colore = 'grey';
-
-  if (tipo === 'utenti' ){
-    element.colore = 'green';
-  }
-  if (tipo === 'mp3' ){
-    element.colore = 'orange';
-  }
-  if (tipo === 'animali' ){
-    element.colore = 'blue';
+  // Inserisci nuovo tipo in array tipes
+  if (arrayTypes.indexOf(element.tipo) === -1){
+    arrayTypes.push(element.tipo);
   }
 
-  console.log(element.colore);
+  // Codice colore icona
+  element.codiceColore = arrayTypes.indexOf(element.tipo);
 
 });
 
-
+// Stampa icone su pagina HTML
 arrayIcone.forEach( (element) =>{
-  let {nome, prefisso, famiglia, colore} = element
+  let {nome, prefisso, famiglia, codiceColore} = element
+
+  //Ottieni colore usando codiceColore
+  let colore = arrayColori[codiceColore];
+
   allIconsBoxHtml.innerHTML +=`
   <div class="icon-box">
     <i class='${famiglia} ${prefisso}-${nome}' style="color:${colore}"> </i>
@@ -142,20 +151,15 @@ arrayIcone.forEach( (element) =>{
   `;
 });
 
-// arrayIcone.forEach( (element) =>{
-//   for (var key in element) {
-//     console.log('key :' + element[key]);
-//   }
-//   console.log('');
-// });
-
-
 // Milestone 3:
 // - Aggiungere una select per filtrare le icone in base al tipo.
 // - Popolare le options della select dinamicamente e, ogni volta che cambia il valore selezionato, visualizzare le icone corrispondenti.
+
+// Prendi elemento iconFilter dalla pagina HTML
 let iconFilterTypeHtml = document.getElementById('icon-filter-type');
 
-arrayColori.forEach( (element) =>{
+// Aggiungi valori al filtro per tipo HTML
+arrayTypes.forEach( (element) =>{
 
   iconFilterTypeHtml.innerHTML +=`
     <option value="${element}">${element}</option>
@@ -171,12 +175,14 @@ $('#icon-filter-type').change(function(){
 
   // // Popola Box
   arrayIcone.forEach( (element) =>{
-    let {nome, prefisso, famiglia, colore} = element;
+    let {nome, prefisso, famiglia, tipo, codiceColore} = element;
     // console.log (`
     //   colore: ${colore}
     //   selezione: ${$(this).val()}`);
 
-    if($(this).val() === colore || ($(this).val() === 'all')){
+    let colore = arrayColori[codiceColore];
+
+    if($(this).val() === tipo || ($(this).val() === 'all')){
       $('.all-icons-box').append(`
       <div class="icon-box">
         <i class='${famiglia} ${prefisso}-${nome}' style="color:${colore}"> </i>
